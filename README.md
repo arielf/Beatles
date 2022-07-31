@@ -1,6 +1,8 @@
-# Beatles
+# Beatles Songs by Year
 
-### D3.js visualization of Beatles Songs by Year
+#### A D3.js visualization
+
+## How to deploy
 
 The contents of this dir are static & self-contained.
 
@@ -25,6 +27,10 @@ github doesn't allow iframes in README.md for security reasons.
 So you need to follow the link to see the app deployed:
 
 [visualization of Beatles Songs by Year (live demo)](https://yendor.com/Beatles/)
+
+## Original data
+
+[Beatles-DB.csv](Beatles-DB.csv)
 
 ## Credits:
 
