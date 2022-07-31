@@ -18,7 +18,7 @@ and the application will be live:
 
 Just follow the quick help at the top of the screen:
 
-![beatles-top-menu.png]
+![top menu](beatles-top-menu.png)
 
 
 ## Credits:
