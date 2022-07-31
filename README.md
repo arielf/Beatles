@@ -2,17 +2,15 @@
 
 ### D3.js visualization of Beatles Songs by Year
 
-[visualization of Beatles Songs by Year (live demo)](https://yendor.com/Beatles/)
-
 The contents of this dir are static & self-contained.
 
 Just copy the following files to a directory served by any web-server
-and the application will be live:
+(or even a local dir on your computer) and the application should be live:
 
-  - index.html
-  - force-directed-graph.js
-  - d3.v3.min.js
-  - Beatles.json
+  - [index.html](index.html)
+  - [force-directed-graph.js](force-directed-graph.js)
+  - [d3.v3.min.js](d3.v3.min.js)
+  - [Beatles.json](Beatles.json)
 
 ## How to use
 
@@ -20,6 +18,13 @@ Just follow the quick help at the top of the screen:
 
 ![top menu](beatles-top-menu.png)
 
+## Live Demo
+
+github doesn't allow iframes in README.md for security reasons.
+
+So you need to follow the link to see the app deployed:
+
+[visualization of Beatles Songs by Year (live demo)](https://yendor.com/Beatles/)
 
 ## Credits:
 
