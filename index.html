@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<style>
+body {
+    position: absolute;
+    top: 0%;
+    font-family: Roboto Condensed, FreeSans, Arial, Verdana, sans-serif;
+
+    /* A light-grey background makes the nodes stroke-color periphery
+       clearer & also makes the title white bg stand-out nicely */
+    background-color: #ededed;
+
+    /*
+    border-style: solid;
+    border-width: 1px;
+    border-color: #555555;
+    */
+}
+
+.maindiv {
+    /* position: static; */
+    /* margin: auto; */
+    /* width: 100%; */
+    /* border: 0px solid #000000; */
+    /* padding: 0px; */
+}
+
+.john {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #00cc00;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+.paul {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #0096ff;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+.george {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #007700;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+.ringo {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: magenta;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+.multi {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #ee0000;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+.other {
+    font: 12px sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #777777;
+    border-radius: 5px;
+    padding: 2px;
+    pointer-events: none;
+}
+
+.labels {
+    /* position: relative; */
+    /* font-family: Roboto Condensed; */
+    font: 14px sans-serif;
+    /* font-weight: bold; */
+    stroke: #ffffff;
+}
+/*
+ * NOTE:
+ * The only style elements that change the font text color inside SVG
+ * are 'stroke' and 'fill'. Don't use 'color'
+ */
+.ds {
+    /* JSON dataset link */
+    font: 20px sans-serif;
+    font-weight: bold;
+    stroke: #0055ff;
+    fill: #0055ff;
+
+}
+a:link { stroke: #0055ff; fill: #0055ff; }
+a:visited { stroke: #000000; fill: #000000; }
+a:hover { stroke: #000000; fill: #ffff00 }
+a:active { stroke: #0055ff; fill: #0055ff; }
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 16px;
+    font: 16px sans-serif;
+    font-family: Roboto Condensed;
+    /* font-weight: bold; */
+    /* font-style: italic; */
+    background-color: black;
+    color: white;
+    border-radius: 10px;    /* rounded corners */
+    pointer-events: none;
+}
+
+div#header {
+    position: relative;
+    top: 0%;
+    width: 100%;
+    text-align: center;
+    padding: 2px;
+    font-family: FreeSans;
+    font: 24px sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+div#help {
+    position: relative;
+    top: 1px;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    font: 16px sans-serif;
+    /* font-weight: bold; */
+    font-style: italic;
+    background-color: #000044;
+    color: white;
+    border-radius: 10px;
+    /*
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    */
+}
+
+div#canvas {
+    position: relative;
+    top: 2px;
+    padding: 0px;
+    font: 20px sans-serif;
+    font-weight: bold;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+
+div#credits {
+    position: fixed;
+    bottom: 2px;
+    left: 24%;
+    width: 52%;
+    text-align: left;
+    padding: 4px;
+    font: 14px sans-serif;
+    /* font-weight: bold; */
+    font-style: italic;
+    background-color: #110044;
+    color: white;
+    border-radius: 10px;
+}
+div#credits a:link { color: #00aaff; }
+div#credits a:visited { color: #ff66ff; }
+div#credits a:hover { color: #ffff00; }
+div#credits a:active { color: #ffff00; }
+
+</style>
+
+<!-- script src="https://d3js.org/d3.v7.min.js"></script -->
+<!-- D3.js: v7 is incompatible, v3 works well for now -->
+<script src="d3.v3.min.js" charset="utf-8"></script>
+
+<body>
+  <div id="header" class="maindiv">
+    Beatles Songs by Year
+  </div>
+
+  <div id="help" class="maindiv">
+      <b>Hover</b> over nodes for song details;
+      <b>drag</b> to move/rearrange</br>
+
+      <b>Year: Large circle</b> &nbsp;&nbsp;
+      <b>Song: Small circle</b></br>
+
+      <b>Songwriter</b>:
+      <span class="john">&nbsp; &#11044; John &nbsp;</span>&nbsp;
+      <span class="paul">&nbsp; &#11044; Paul &nbsp;</span>&nbsp;
+      <span class="george">&nbsp; &#11044; George &nbsp;</span>&nbsp;
+      <span class="ringo">&nbsp; &#11044; Ringo &nbsp;</span>&nbsp;
+      <span class="multi">&nbsp; &#11044; Multiple-Beatles &nbsp;</span>&nbsp;
+      <span class="other">&nbsp; &#11044; Others &nbsp;</span>&nbsp;
+  </div>
+
+  <div id="canvas" class="maindiv">
+    <script src="fdg.min.js" charset="utf-8"></script>
+  </div>
+
+  <div id="credits" class="maindiv">
+    <center><b>Credits:</b></center><ul>
+        <li><b>Ori Faigon:</b> ideas, design, inspiration, data curation</li>
+        <li><b>Ariel Faigon:</b> connecting the dots</li>
+        <li><b>Mike Bostock</b> (<a href="https://d3js.org">D3.js</a>)</li>
+        <li><b>Vladan Devedzic</b> (<a href="https://github.com/inteligentni/Class-05-Feature-engineering">data-set @ github</a>)
+    </ul>
+  </div>
+</body>
+</html>
